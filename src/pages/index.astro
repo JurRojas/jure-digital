@@ -1,17 +1,640 @@
 ---
+import '../styles/global.css';
+import {
+	ArrowRight,
+	Bot,
+	CalendarCheck,
+	CheckCircle2,
+	Clock3,
+	Code2,
+	FileText,
+	Globe2,
+	Handshake,
+	Layers,
+	MapPin,
+	Menu,
+	MessageCircle,
+	MousePointerClick,
+	PanelsTopLeft,
+	PhoneCall,
+	Rocket,
+	Send,
+	ShieldCheck,
+	Sparkles,
+	Store,
+	X,
+} from '@lucide/astro';
 
+const navLinks = [
+	{ href: '#inicio', label: 'Inicio' },
+	{ href: '#servicios', label: 'Servicios' },
+	{ href: '#proceso', label: 'Cómo trabajo' },
+	{ href: '#proyectos', label: 'Proyectos' },
+	{ href: '#contacto', label: 'Contacto' },
+];
+
+const services = [
+	{
+		icon: MousePointerClick,
+		title: 'Landing pages',
+		text: 'Una página directa para presentar tu oferta, generar confianza y llevar al cliente al contacto.',
+		accent: 'text-aqua-300',
+	},
+	{
+		icon: PanelsTopLeft,
+		title: 'Sitios web',
+		text: 'Páginas claras para contar quién eres, qué haces, dónde estás y por qué deberían elegirte.',
+		accent: 'text-mint-300',
+	},
+	{
+		icon: Layers,
+		title: 'Catálogos digitales',
+		text: 'Muestra productos, servicios, paquetes o proyectos sin depender de mandar fotos una por una.',
+		accent: 'text-sun-300',
+	},
+	{
+		icon: MessageCircle,
+		title: 'Formularios y contacto',
+		text: 'Recibe solicitudes, cotizaciones y mensajes con rutas simples hacia WhatsApp o correo.',
+		accent: 'text-aqua-300',
+	},
+	{
+		icon: Store,
+		title: 'Presencia local',
+		text: 'Convierte tu información básica en una sucursal en línea lista para compartir.',
+		accent: 'text-mint-300',
+	},
+	{
+		icon: Bot,
+		title: 'IA práctica',
+		text: 'Automatizaciones pequeñas para ahorrar tiempo: respuestas base, organización y textos útiles.',
+		accent: 'text-sun-300',
+	},
+];
+
+const process = [
+	'Me platicas sobre tu negocio y lo que quieres lograr.',
+	'Vemos a qué escala quieres llegar: presencia, trayectoria, productos o cotizaciones.',
+	'Reunimos fotos, dirección, servicios, productos, proyectos, redes y datos de contacto.',
+	'Diseño tu página para que se sienta como una sucursal en línea de tu negocio.',
+	'Ajustamos detalles juntos, sin vueltas raras ni lenguaje técnico innecesario.',
+	'Publicamos la página y queda lista para compartir con tus clientes.',
+];
+
+const projects = [
+	{
+		name: 'Brava Studio',
+		description: 'Landing para un negocio de belleza que necesitaba verse más confiable desde Instagram.',
+		goal: 'Convertir visitas en citas por WhatsApp.',
+		tech: ['Astro', 'Tailwind', 'WhatsApp CTA'],
+		result: 'Oferta más clara, servicios ordenados y contacto directo en móvil.',
+	},
+	{
+		name: 'Norte Catálogo',
+		description: 'Catálogo digital para mostrar productos sin enviar listas manuales todos los días.',
+		goal: 'Facilitar consulta de productos y pedidos iniciales.',
+		tech: ['Astro', 'SEO local', 'Catálogo responsive'],
+		result: 'Productos mejor organizados y una experiencia fácil de compartir.',
+	},
+	{
+		name: 'Madera Viva',
+		description: 'Sitio de trayectoria para mostrar proyectos, materiales y zonas de atención.',
+		goal: 'Dar confianza antes de la primera llamada.',
+		tech: ['Astro', 'Galería', 'Formulario'],
+		result: 'Más contexto para el cliente y solicitudes con información útil.',
+	},
+];
+
+const benefits = [
+	{ icon: Clock3, text: 'Tu negocio puede estar disponible 24/7, incluso cuando estás ocupado.' },
+	{ icon: MapPin, text: 'Pueden descubrirte y entender tu oferta antes de ir a tu ubicación.' },
+	{ icon: ShieldCheck, text: 'Generas más confianza antes del primer mensaje o llamada.' },
+	{ icon: Send, text: 'Recibes mensajes, cotizaciones o solicitudes con datos más completos.' },
+	{ icon: FileText, text: 'Muestras productos, servicios, proyectos o trayectoria con orden.' },
+	{ icon: Sparkles, text: 'Te ves más profesional frente a clientes que apenas te están conociendo.' },
+];
+
+const stats = [
+	{ value: '24/7', label: 'disponible para tus clientes' },
+	{ value: '1:1', label: 'trato directo conmigo' },
+	{ value: 'Móvil', label: 'pensado primero para celular' },
+];
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang="es-MX">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta
+			name="description"
+			content="Diseño y desarrollo páginas web, landing pages, catálogos digitales y formularios para negocios locales que quieren verse profesionales en internet."
+		/>
+		<title>Jure Digital | Páginas web para negocios locales</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="overflow-x-hidden antialiased">
+		<header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink-950/72 backdrop-blur-xl">
+			<nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Navegación principal">
+				<a href="#inicio" class="group flex items-center gap-3" aria-label="Jure Digital, ir al inicio">
+					<span class="grid size-10 place-items-center rounded-lg border border-mint-300/25 bg-mint-300/10 text-mint-300 soft-ring">
+						<Code2 class="size-5" aria-hidden="true" />
+					</span>
+					<span class="leading-tight">
+						<span class="block text-sm font-semibold tracking-wide text-white">Jure Digital</span>
+						<span class="block text-xs text-white/55">web para negocio local</span>
+					</span>
+				</a>
+
+				<div class="hidden items-center gap-7 lg:flex">
+					{
+						navLinks.map((link) => (
+							<a href={link.href} class="text-sm font-medium text-white/66 transition hover:text-white">
+								{link.label}
+							</a>
+						))
+					}
+				</div>
+
+				<div class="hidden items-center gap-3 lg:flex">
+					<a
+						href="#contacto"
+						class="inline-flex items-center gap-2 rounded-full bg-mint-300 px-5 py-3 text-sm font-semibold text-ink-950 shadow-[0_0_34px_rgba(125,247,196,0.26)] transition hover:-translate-y-0.5 hover:bg-white focus:outline-none focus:ring-2 focus:ring-mint-300 focus:ring-offset-2 focus:ring-offset-ink-950"
+					>
+						Cuéntame sobre tu negocio
+						<ArrowRight class="size-4" aria-hidden="true" />
+					</a>
+				</div>
+
+				<button
+					id="mobile-menu-button"
+					class="grid size-11 place-items-center rounded-lg border border-white/10 bg-white/5 text-white lg:hidden"
+					type="button"
+					aria-controls="mobile-menu"
+					aria-expanded="false"
+					aria-label="Abrir menú"
+				>
+					<Menu class="menu-open size-5" aria-hidden="true" />
+					<X class="menu-close hidden size-5" aria-hidden="true" />
+				</button>
+			</nav>
+
+			<div id="mobile-menu" class="hidden border-t border-white/10 bg-ink-950/96 px-4 pb-5 pt-2 lg:hidden">
+				<div class="mx-auto flex max-w-7xl flex-col gap-2">
+					{
+						navLinks.map((link) => (
+							<a href={link.href} class="rounded-lg px-3 py-3 text-sm font-medium text-white/72 transition hover:bg-white/5 hover:text-white">
+								{link.label}
+							</a>
+						))
+					}
+					<a
+						href="#contacto"
+						class="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-mint-300 px-5 py-3 text-sm font-semibold text-ink-950"
+					>
+						Cuéntame sobre tu negocio
+						<ArrowRight class="size-4" aria-hidden="true" />
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<section id="inicio" class="relative min-h-[92svh] overflow-hidden pt-24 sm:pt-28 lg:min-h-[94vh]">
+				<img
+					src="/assets/hero-local-digital.png"
+					alt="Mockup oscuro de una página web para negocio local con catálogo, mapa y mensajes de contacto"
+					class="absolute inset-0 z-0 h-full w-full object-cover object-[62%_center] opacity-90"
+					loading="eager"
+					decoding="async"
+				/>
+				<div class="absolute inset-0 z-10 bg-[linear-gradient(90deg,#05070a_0%,rgba(5,7,10,0.92)_28%,rgba(5,7,10,0.48)_58%,rgba(5,7,10,0.28)_100%)]"></div>
+				<div class="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(5,7,10,0.2)_0%,#05070a_96%)]"></div>
+				<div class="absolute inset-x-0 bottom-0 z-20 h-72 bg-[linear-gradient(180deg,rgba(5,7,10,0)_0%,#05070a_38%,#05070a_100%)]"></div>
+
+				<div class="relative z-30 mx-auto grid max-w-7xl gap-10 px-4 pb-20 pt-10 sm:px-6 sm:pt-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.55fr)] lg:px-8 lg:pb-28 lg:pt-24">
+					<div class="max-w-3xl">
+						<div class="reveal-up inline-flex max-w-full items-center gap-2 rounded-full border border-white/12 bg-white/8 px-3 py-2 text-xs font-medium text-white/78 backdrop-blur">
+							<span class="size-2 rounded-full bg-mint-300 shadow-[0_0_16px_rgba(125,247,196,0.85)]"></span>
+							Páginas útiles para negocios reales
+						</div>
+
+						<h1 class="reveal-up reveal-delay-1 mt-7 max-w-4xl text-balance text-5xl font-semibold leading-[1.02] tracking-normal text-white sm:text-6xl lg:text-7xl">
+							Tu negocio también puede estar abierto en internet.
+						</h1>
+
+						<p class="reveal-up reveal-delay-2 mt-6 max-w-2xl text-pretty text-lg leading-8 text-white/72 sm:text-xl">
+							Diseño y desarrollo páginas web, landing pages, catálogos y formularios para que tus clientes te entiendan, confíen y puedan contactarte sin fricción.
+						</p>
+
+						<div class="reveal-up reveal-delay-3 mt-9 flex flex-col gap-3 sm:flex-row">
+							<a
+								href="#contacto"
+								class="inline-flex items-center justify-center gap-2 rounded-full bg-mint-300 px-6 py-4 text-sm font-semibold text-ink-950 shadow-[0_0_38px_rgba(125,247,196,0.28)] transition hover:-translate-y-0.5 hover:bg-white focus:outline-none focus:ring-2 focus:ring-mint-300 focus:ring-offset-2 focus:ring-offset-ink-950"
+							>
+								Cuéntame sobre tu negocio
+								<ArrowRight class="size-4" aria-hidden="true" />
+							</a>
+							<a
+								href="#proceso"
+								class="inline-flex items-center justify-center gap-2 rounded-full border border-white/14 bg-white/7 px-6 py-4 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-aqua-300/45 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-aqua-300 focus:ring-offset-2 focus:ring-offset-ink-950"
+							>
+								Ver cómo trabajo
+								<CalendarCheck class="size-4" aria-hidden="true" />
+							</a>
+						</div>
+
+						<div class="mt-10 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
+							{
+								stats.map((stat) => (
+									<div class="glass-panel rounded-lg px-4 py-4">
+										<p class="text-2xl font-semibold text-white">{stat.value}</p>
+										<p class="mt-1 text-sm leading-5 text-white/58">{stat.label}</p>
+									</div>
+								))
+							}
+						</div>
+					</div>
+
+					<div class="hidden items-end lg:flex">
+						<div class="glass-panel lift-card w-full rounded-xl p-5">
+							<div class="flex items-start justify-between gap-4">
+								<div>
+									<p class="text-sm font-semibold text-white">Vista rápida</p>
+									<p class="mt-1 text-sm text-white/58">Así se ordena tu presencia digital.</p>
+								</div>
+								<span class="rounded-full bg-aqua-300/12 px-3 py-1 text-xs font-semibold text-aqua-300">En línea</span>
+							</div>
+							<div class="mt-5 space-y-3">
+								<div class="rounded-lg border border-white/10 bg-white/6 p-4">
+									<div class="flex items-center gap-3">
+										<span class="grid size-10 place-items-center rounded-lg bg-mint-300/12 text-mint-300">
+											<Store class="size-5" aria-hidden="true" />
+										</span>
+										<div>
+											<p class="text-sm font-semibold text-white">Tu sucursal en línea</p>
+											<p class="text-xs text-white/52">Servicios, ubicación y contacto.</p>
+										</div>
+									</div>
+								</div>
+								<div class="grid grid-cols-2 gap-3">
+									<div class="rounded-lg border border-white/10 bg-white/6 p-4">
+										<Globe2 class="size-5 text-aqua-300" aria-hidden="true" />
+										<p class="mt-5 text-sm font-semibold text-white">Encuentro</p>
+										<p class="mt-1 text-xs text-white/52">Te descubren desde el celular.</p>
+									</div>
+									<div class="rounded-lg border border-white/10 bg-white/6 p-4">
+										<PhoneCall class="size-5 text-sun-300" aria-hidden="true" />
+										<p class="mt-5 text-sm font-semibold text-white">Contacto</p>
+										<p class="mt-1 text-xs text-white/52">Mensajes mejor preparados.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="servicios" class="relative py-20 sm:py-24">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<div class="max-w-3xl">
+						<p class="text-sm font-semibold uppercase tracking-[0.22em] text-mint-300">Servicios</p>
+						<h2 class="mt-4 text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
+							Lo necesario para que tu negocio se vea claro, activo y profesional.
+						</h2>
+						<p class="mt-5 text-lg leading-8 text-white/64">
+							No se trata de llenar una página por llenar. Se trata de construir un lugar útil donde tus clientes puedan entenderte y tomar acción.
+						</p>
+					</div>
+
+					<div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						{
+							services.map((service) => {
+								const Icon = service.icon;
+								return (
+									<article class="glass-panel lift-card rounded-xl p-6">
+										<div class={`grid size-12 place-items-center rounded-lg border border-white/10 bg-white/7 ${service.accent}`}>
+											<Icon class="size-6" aria-hidden="true" />
+										</div>
+										<h3 class="mt-6 text-xl font-semibold text-white">{service.title}</h3>
+										<p class="mt-3 text-pretty leading-7 text-white/62">{service.text}</p>
+									</article>
+								);
+							})
+						}
+					</div>
+				</div>
+			</section>
+
+			<section id="proceso" class="py-20 sm:py-24">
+				<div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
+					<div>
+						<p class="text-sm font-semibold uppercase tracking-[0.22em] text-aqua-300">Cómo trabajo</p>
+						<h2 class="mt-4 text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
+							Trabajo contigo directo, con preguntas simples y decisiones claras.
+						</h2>
+						<p class="mt-5 text-lg leading-8 text-white/64">
+							Puedo avanzar en línea o agendar una visita presencial si tu negocio necesita revisar fotos, productos, espacio o materiales en persona.
+						</p>
+						<div class="mt-8 rounded-xl border border-mint-300/18 bg-mint-300/8 p-5">
+							<div class="flex gap-3">
+								<Handshake class="mt-1 size-5 shrink-0 text-mint-300" aria-hidden="true" />
+								<p class="text-pretty leading-7 text-white/72">
+									La idea es que no sientas que estás contratando una agencia enorme. Hablas con alguien que diseña, desarrolla y entiende el objetivo contigo.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="glass-panel rounded-xl p-4 sm:p-6">
+						<ol class="space-y-3">
+							{
+								process.map((step, index) => (
+									<li class="group flex gap-4 rounded-lg border border-white/8 bg-white/[0.045] p-4 transition hover:border-mint-300/28 hover:bg-white/[0.07]">
+										<span class="grid size-9 shrink-0 place-items-center rounded-lg bg-white/8 text-sm font-semibold text-mint-300">
+											{String(index + 1).padStart(2, '0')}
+										</span>
+										<p class="self-center leading-7 text-white/72">{step}</p>
+									</li>
+								))
+							}
+						</ol>
+					</div>
+				</div>
+			</section>
+
+			<section id="proyectos" class="py-20 sm:py-24">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+						<div class="max-w-3xl">
+							<p class="text-sm font-semibold uppercase tracking-[0.22em] text-sun-300">Proyectos</p>
+							<h2 class="mt-4 text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
+								Ejemplos de páginas pensadas para vender mejor, no solo para verse bonitas.
+							</h2>
+						</div>
+						<a href="#contacto" class="inline-flex w-fit items-center gap-2 rounded-full border border-white/14 bg-white/7 px-5 py-3 text-sm font-semibold text-white transition hover:border-sun-300/45 hover:bg-white/10">
+							Crear algo similar
+							<Rocket class="size-4" aria-hidden="true" />
+						</a>
+					</div>
+
+					<div class="mt-12 grid gap-4 lg:grid-cols-3">
+						{
+							projects.map((project) => (
+								<article class="glass-panel lift-card flex min-h-full flex-col rounded-xl p-6">
+									<div class="flex items-center justify-between gap-4">
+										<h3 class="text-2xl font-semibold text-white">{project.name}</h3>
+										<span class="grid size-10 place-items-center rounded-lg bg-aqua-300/10 text-aqua-300">
+											<CheckCircle2 class="size-5" aria-hidden="true" />
+										</span>
+									</div>
+									<p class="mt-4 leading-7 text-white/64">{project.description}</p>
+									<div class="mt-6 space-y-4">
+										<div>
+											<p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/42">Objetivo</p>
+											<p class="mt-2 text-sm leading-6 text-white/72">{project.goal}</p>
+										</div>
+										<div>
+											<p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/42">Tecnologías</p>
+											<div class="mt-3 flex flex-wrap gap-2">
+												{project.tech.map((tech) => (
+													<span class="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-xs font-medium text-white/70">{tech}</span>
+												))}
+											</div>
+										</div>
+									</div>
+									<div class="mt-auto pt-7">
+										<p class="rounded-lg border border-mint-300/14 bg-mint-300/8 p-4 text-sm leading-6 text-white/72">
+											{project.result}
+										</p>
+									</div>
+								</article>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<section class="py-20 sm:py-24">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+						<div>
+							<p class="text-sm font-semibold uppercase tracking-[0.22em] text-mint-300">Beneficios</p>
+							<h2 class="mt-4 text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
+								Una buena página trabaja incluso antes de que tú contestes el primer mensaje.
+							</h2>
+							<p class="mt-5 text-lg leading-8 text-white/64">
+								La meta es que el cliente llegue con menos dudas, más confianza y una forma clara de avanzar.
+							</p>
+						</div>
+
+						<div class="grid gap-3 sm:grid-cols-2">
+							{
+								benefits.map((benefit) => {
+									const Icon = benefit.icon;
+									return (
+										<div class="rounded-xl border border-white/10 bg-white/[0.055] p-5">
+											<Icon class="size-5 text-aqua-300" aria-hidden="true" />
+											<p class="mt-4 leading-7 text-white/70">{benefit.text}</p>
+										</div>
+									);
+								})
+							}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="contacto" class="py-20 sm:py-24">
+				<div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+					<div class="rounded-xl border border-white/10 bg-white/[0.045] p-6 sm:p-8">
+						<p class="text-sm font-semibold uppercase tracking-[0.22em] text-aqua-300">Contacto</p>
+						<h2 class="mt-4 text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
+							Cuéntame qué necesita tu negocio y te digo por dónde empezar.
+						</h2>
+						<p class="mt-5 text-lg leading-8 text-white/64">
+							No necesitas llegar con todo resuelto. Con una idea general puedo ayudarte a ordenar alcance, contenido y siguiente paso.
+						</p>
+						<div class="mt-8 space-y-4">
+							<div class="flex gap-3">
+								<span class="grid size-10 shrink-0 place-items-center rounded-lg bg-mint-300/10 text-mint-300">
+									<CalendarCheck class="size-5" aria-hidden="true" />
+								</span>
+								<p class="self-center text-white/70">Podemos trabajar en línea o agendar visita presencial.</p>
+							</div>
+							<div class="flex gap-3">
+								<span class="grid size-10 shrink-0 place-items-center rounded-lg bg-sun-300/10 text-sun-300">
+									<MessageCircle class="size-5" aria-hidden="true" />
+								</span>
+								<p class="self-center text-white/70">El formulario abre WhatsApp con tu mensaje ya preparado.</p>
+							</div>
+						</div>
+					</div>
+
+					<form id="contact-form" data-whatsapp-number="" class="glass-panel rounded-xl p-5 sm:p-7">
+						<div class="grid gap-4 sm:grid-cols-2">
+							<label class="block">
+								<span class="text-sm font-medium text-white/72">Nombre</span>
+								<input
+									name="name"
+									type="text"
+									required
+									autocomplete="name"
+									placeholder="Tu nombre"
+									class="mt-2 w-full rounded-lg border border-white/10 bg-white/7 px-4 py-3 text-white outline-none transition placeholder:text-white/32 focus:border-mint-300/60 focus:ring-4 focus:ring-mint-300/10"
+								/>
+							</label>
+							<label class="block">
+								<span class="text-sm font-medium text-white/72">Negocio</span>
+								<input
+									name="business"
+									type="text"
+									required
+									placeholder="Nombre del negocio"
+									class="mt-2 w-full rounded-lg border border-white/10 bg-white/7 px-4 py-3 text-white outline-none transition placeholder:text-white/32 focus:border-mint-300/60 focus:ring-4 focus:ring-mint-300/10"
+								/>
+							</label>
+						</div>
+
+						<label class="mt-4 block">
+							<span class="text-sm font-medium text-white/72">Qué necesita</span>
+							<select
+								name="need"
+								required
+								class="mt-2 w-full rounded-lg border border-white/10 bg-ink-900 px-4 py-3 text-white outline-none transition focus:border-mint-300/60 focus:ring-4 focus:ring-mint-300/10"
+							>
+								<option value="">Selecciona una opción</option>
+								<option>Landing page</option>
+								<option>Sitio web</option>
+								<option>Catálogo digital</option>
+								<option>Formulario o contacto</option>
+								<option>Presencia digital para mi negocio</option>
+								<option>No estoy seguro, quiero orientación</option>
+							</select>
+						</label>
+
+						<label class="mt-4 block">
+							<span class="text-sm font-medium text-white/72">WhatsApp</span>
+							<input
+								name="phone"
+								type="tel"
+								required
+								autocomplete="tel"
+								placeholder="Tu número de WhatsApp"
+								class="mt-2 w-full rounded-lg border border-white/10 bg-white/7 px-4 py-3 text-white outline-none transition placeholder:text-white/32 focus:border-mint-300/60 focus:ring-4 focus:ring-mint-300/10"
+							/>
+						</label>
+
+						<label class="mt-4 block">
+							<span class="text-sm font-medium text-white/72">Mensaje</span>
+							<textarea
+								name="message"
+								required
+								rows="5"
+								placeholder="Cuéntame qué vendes, qué te gustaría mostrar o qué problema quieres resolver."
+								class="mt-2 w-full resize-none rounded-lg border border-white/10 bg-white/7 px-4 py-3 text-white outline-none transition placeholder:text-white/32 focus:border-mint-300/60 focus:ring-4 focus:ring-mint-300/10"
+							></textarea>
+						</label>
+
+						<button
+							type="submit"
+							class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-mint-300 px-6 py-4 text-sm font-semibold text-ink-950 shadow-[0_0_38px_rgba(125,247,196,0.24)] transition hover:-translate-y-0.5 hover:bg-white focus:outline-none focus:ring-2 focus:ring-mint-300 focus:ring-offset-2 focus:ring-offset-ink-950"
+						>
+							Enviar por WhatsApp
+							<Send class="size-4" aria-hidden="true" />
+						</button>
+					</form>
+				</div>
+			</section>
+
+			<section class="pb-20 sm:pb-24">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<div class="glass-panel overflow-hidden rounded-xl p-8 sm:p-10 lg:p-12">
+						<div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+							<div>
+								<p class="text-sm font-semibold uppercase tracking-[0.22em] text-mint-300">Siguiente paso</p>
+								<h2 class="mt-4 max-w-3xl text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
+									Tu idea puede convertirse en una página clara, útil y lista para compartir.
+								</h2>
+								<p class="mt-5 max-w-2xl text-lg leading-8 text-white/64">
+									Platicamos lo que tienes, lo que falta y lo que más le conviene a tu negocio en esta etapa.
+								</p>
+							</div>
+							<a
+								href="#contacto"
+								class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-sm font-semibold text-ink-950 transition hover:-translate-y-0.5 hover:bg-mint-300"
+							>
+								Quiero empezar
+								<ArrowRight class="size-4" aria-hidden="true" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="border-t border-white/10 py-8">
+			<div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 text-sm text-white/48 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+				<p>© 2026 Jure Digital. Páginas web para negocios locales.</p>
+				<p>Diseño directo, desarrollo claro y presencia en línea.</p>
+			</div>
+		</footer>
+
+		<script>
+			const menuButton = document.querySelector('#mobile-menu-button');
+			const mobileMenu = document.querySelector('#mobile-menu');
+			const openIcon = menuButton?.querySelector('.menu-open');
+			const closeIcon = menuButton?.querySelector('.menu-close');
+
+			const closeMenu = () => {
+				mobileMenu?.classList.add('hidden');
+				menuButton?.setAttribute('aria-expanded', 'false');
+				openIcon?.classList.remove('hidden');
+				closeIcon?.classList.add('hidden');
+			};
+
+			menuButton?.addEventListener('click', () => {
+				const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+				mobileMenu?.classList.toggle('hidden', isExpanded);
+				menuButton.setAttribute('aria-expanded', String(!isExpanded));
+				openIcon?.classList.toggle('hidden', !isExpanded);
+				closeIcon?.classList.toggle('hidden', isExpanded);
+			});
+
+			mobileMenu?.querySelectorAll('a').forEach((link) => {
+				link.addEventListener('click', closeMenu);
+			});
+
+			const form = document.querySelector('#contact-form');
+
+			form?.addEventListener('submit', (event) => {
+				event.preventDefault();
+
+				const formData = new FormData(form);
+				const name = String(formData.get('name') || '').trim();
+				const business = String(formData.get('business') || '').trim();
+				const need = String(formData.get('need') || '').trim();
+				const phone = String(formData.get('phone') || '').trim();
+				const message = String(formData.get('message') || '').trim();
+				const ownerNumber = form.getAttribute('data-whatsapp-number')?.trim();
+
+				const whatsappMessage = [
+					'Hola, quiero una página para mi negocio.',
+					`Mi nombre es ${name}.`,
+					`Mi negocio es ${business}.`,
+					`Me interesa ${need}.`,
+					`Mi WhatsApp es ${phone}.`,
+					`Mi mensaje es: ${message}.`,
+				].join(' ');
+
+				const target = ownerNumber
+					? `https://wa.me/${ownerNumber}?text=${encodeURIComponent(whatsappMessage)}`
+					: `https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`;
+
+				window.open(target, '_blank', 'noopener,noreferrer');
+			});
+		</script>
 	</body>
 </html>
