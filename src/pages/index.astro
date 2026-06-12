@@ -1,640 +1,405 @@
 ---
 import '../styles/global.css';
-import {
-	ArrowRight,
-	Bot,
-	CalendarCheck,
-	CheckCircle2,
-	Clock3,
-	Code2,
-	FileText,
-	Globe2,
-	Handshake,
-	Layers,
-	MapPin,
-	Menu,
-	MessageCircle,
-	MousePointerClick,
-	PanelsTopLeft,
-	PhoneCall,
-	Rocket,
-	Send,
-	ShieldCheck,
-	Sparkles,
-	Store,
-	X,
-} from '@lucide/astro';
-
-const navLinks = [
-	{ href: '#inicio', label: 'Inicio' },
-	{ href: '#servicios', label: 'Servicios' },
-	{ href: '#proceso', label: 'Cómo trabajo' },
-	{ href: '#proyectos', label: 'Proyectos' },
-	{ href: '#contacto', label: 'Contacto' },
-];
-
-const services = [
-	{
-		icon: MousePointerClick,
-		title: 'Landing pages',
-		text: 'Una página directa para presentar tu oferta, generar confianza y llevar al cliente al contacto.',
-		accent: 'text-aqua-300',
-	},
-	{
-		icon: PanelsTopLeft,
-		title: 'Sitios web',
-		text: 'Páginas claras para contar quién eres, qué haces, dónde estás y por qué deberían elegirte.',
-		accent: 'text-mint-300',
-	},
-	{
-		icon: Layers,
-		title: 'Catálogos digitales',
-		text: 'Muestra productos, servicios, paquetes o proyectos sin depender de mandar fotos una por una.',
-		accent: 'text-sun-300',
-	},
-	{
-		icon: MessageCircle,
-		title: 'Formularios y contacto',
-		text: 'Recibe solicitudes, cotizaciones y mensajes con rutas simples hacia WhatsApp o correo.',
-		accent: 'text-aqua-300',
-	},
-	{
-		icon: Store,
-		title: 'Presencia local',
-		text: 'Convierte tu información básica en una sucursal en línea lista para compartir.',
-		accent: 'text-mint-300',
-	},
-	{
-		icon: Bot,
-		title: 'IA práctica',
-		text: 'Automatizaciones pequeñas para ahorrar tiempo: respuestas base, organización y textos útiles.',
-		accent: 'text-sun-300',
-	},
-];
-
-const process = [
-	'Me platicas sobre tu negocio y lo que quieres lograr.',
-	'Vemos a qué escala quieres llegar: presencia, trayectoria, productos o cotizaciones.',
-	'Reunimos fotos, dirección, servicios, productos, proyectos, redes y datos de contacto.',
-	'Diseño tu página para que se sienta como una sucursal en línea de tu negocio.',
-	'Ajustamos detalles juntos, sin vueltas raras ni lenguaje técnico innecesario.',
-	'Publicamos la página y queda lista para compartir con tus clientes.',
-];
-
-const projects = [
-	{
-		name: 'Brava Studio',
-		description: 'Landing para un negocio de belleza que necesitaba verse más confiable desde Instagram.',
-		goal: 'Convertir visitas en citas por WhatsApp.',
-		tech: ['Astro', 'Tailwind', 'WhatsApp CTA'],
-		result: 'Oferta más clara, servicios ordenados y contacto directo en móvil.',
-	},
-	{
-		name: 'Norte Catálogo',
-		description: 'Catálogo digital para mostrar productos sin enviar listas manuales todos los días.',
-		goal: 'Facilitar consulta de productos y pedidos iniciales.',
-		tech: ['Astro', 'SEO local', 'Catálogo responsive'],
-		result: 'Productos mejor organizados y una experiencia fácil de compartir.',
-	},
-	{
-		name: 'Madera Viva',
-		description: 'Sitio de trayectoria para mostrar proyectos, materiales y zonas de atención.',
-		goal: 'Dar confianza antes de la primera llamada.',
-		tech: ['Astro', 'Galería', 'Formulario'],
-		result: 'Más contexto para el cliente y solicitudes con información útil.',
-	},
-];
-
-const benefits = [
-	{ icon: Clock3, text: 'Tu negocio puede estar disponible 24/7, incluso cuando estás ocupado.' },
-	{ icon: MapPin, text: 'Pueden descubrirte y entender tu oferta antes de ir a tu ubicación.' },
-	{ icon: ShieldCheck, text: 'Generas más confianza antes del primer mensaje o llamada.' },
-	{ icon: Send, text: 'Recibes mensajes, cotizaciones o solicitudes con datos más completos.' },
-	{ icon: FileText, text: 'Muestras productos, servicios, proyectos o trayectoria con orden.' },
-	{ icon: Sparkles, text: 'Te ves más profesional frente a clientes que apenas te están conociendo.' },
-];
-
-const stats = [
-	{ value: '24/7', label: 'disponible para tus clientes' },
-	{ value: '1:1', label: 'trato directo conmigo' },
-	{ value: 'Móvil', label: 'pensado primero para celular' },
-];
 ---
 
-<!doctype html>
-<html lang="es-MX">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<meta
-			name="description"
-			content="Diseño y desarrollo páginas web, landing pages, catálogos digitales y formularios para negocios locales que quieren verse profesionales en internet."
-		/>
-		<title>Jure Digital | Páginas web para negocios locales</title>
-	</head>
-	<body class="overflow-x-hidden antialiased">
-		<header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink-950/72 backdrop-blur-xl">
-			<nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Navegación principal">
-				<a href="#inicio" class="group flex items-center gap-3" aria-label="Jure Digital, ir al inicio">
-					<span class="grid size-10 place-items-center rounded-lg border border-mint-300/25 bg-mint-300/10 text-mint-300 soft-ring">
-						<Code2 class="size-5" aria-hidden="true" />
-					</span>
-					<span class="leading-tight">
-						<span class="block text-sm font-semibold tracking-wide text-white">Jure Digital</span>
-						<span class="block text-xs text-white/55">web para negocio local</span>
-					</span>
-				</a>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVON - Soluciones Web para tu Negocio</title>
+    <meta name="description" content="Páginas web claras, modernas y pensadas para presentar tus servicios, responder dudas y generar confianza las 24 horas.">
+    <meta name="theme-color" content="#0d6f74" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f6f1e6" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" aria-label="Navegación principal">
+        <div class="navbar-container">
+            <a class="navbar-logo" href="/" aria-label="REVON inicio">
+                <span class="logo-mark" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" role="img">
+                        <path class="logo-mark-bg" d="M16 2.5 29.5 10v12L16 29.5 2.5 22V10L16 2.5Z"></path>
+                        <path class="logo-mark-line" d="M9.4 11.2h8.1c3.1 0 5.1 1.7 5.1 4.3 0 2.1-1.2 3.5-3.2 4.1l3.7 5.2h-4.4l-3.2-4.7h-2.3v4.7H9.4V11.2Zm3.8 3.1v2.9h4.1c1 0 1.6-.5 1.6-1.4 0-1-.6-1.5-1.6-1.5h-4.1Z"></path>
+                    </svg>
+                </span>
+                <span class="logo-word">REVON</span>
+            </a>
 
-				<div class="hidden items-center gap-7 lg:flex">
-					{
-						navLinks.map((link) => (
-							<a href={link.href} class="text-sm font-medium text-white/66 transition hover:text-white">
-								{link.label}
-							</a>
-						))
-					}
-				</div>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navLinks" aria-expanded="false">
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
 
-				<div class="hidden items-center gap-3 lg:flex">
-					<a
-						href="#contacto"
-						class="inline-flex items-center gap-2 rounded-full bg-mint-300 px-5 py-3 text-sm font-semibold text-ink-950 shadow-[0_0_34px_rgba(125,247,196,0.26)] transition hover:-translate-y-0.5 hover:bg-white focus:outline-none focus:ring-2 focus:ring-mint-300 focus:ring-offset-2 focus:ring-offset-ink-950"
-					>
-						Cuéntame sobre tu negocio
-						<ArrowRight class="size-4" aria-hidden="true" />
-					</a>
-				</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
 
-				<button
-					id="mobile-menu-button"
-					class="grid size-11 place-items-center rounded-lg border border-white/10 bg-white/5 text-white lg:hidden"
-					type="button"
-					aria-controls="mobile-menu"
-					aria-expanded="false"
-					aria-label="Abrir menú"
-				>
-					<Menu class="menu-open size-5" aria-hidden="true" />
-					<X class="menu-close hidden size-5" aria-hidden="true" />
-				</button>
-			</nav>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-bg-gradient"></div>
+        <div class="container">
+            <div class="hero-tag">
+                <span class="tag-dot">•</span>
+                Soluciones digitales para negocios locales
+            </div>
 
-			<div id="mobile-menu" class="hidden border-t border-white/10 bg-ink-950/96 px-4 pb-5 pt-2 lg:hidden">
-				<div class="mx-auto flex max-w-7xl flex-col gap-2">
-					{
-						navLinks.map((link) => (
-							<a href={link.href} class="rounded-lg px-3 py-3 text-sm font-medium text-white/72 transition hover:bg-white/5 hover:text-white">
-								{link.label}
-							</a>
-						))
-					}
-					<a
-						href="#contacto"
-						class="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-mint-300 px-5 py-3 text-sm font-semibold text-ink-950"
-					>
-						Cuéntame sobre tu negocio
-						<ArrowRight class="size-4" aria-hidden="true" />
-					</a>
-				</div>
-			</div>
-		</header>
+            <h1 class="hero-title">
+                Tu negocio digital,
+                <span class="highlight-serif">siempre abierto</span>
+            </h1>
 
-		<main>
-			<section id="inicio" class="relative min-h-[92svh] overflow-hidden pt-24 sm:pt-28 lg:min-h-[94vh]">
-				<img
-					src="/assets/hero-local-digital.png"
-					alt="Mockup oscuro de una página web para negocio local con catálogo, mapa y mensajes de contacto"
-					class="absolute inset-0 z-0 h-full w-full object-cover object-[62%_center] opacity-90"
-					loading="eager"
-					decoding="async"
-				/>
-				<div class="absolute inset-0 z-10 bg-[linear-gradient(90deg,#05070a_0%,rgba(5,7,10,0.92)_28%,rgba(5,7,10,0.48)_58%,rgba(5,7,10,0.28)_100%)]"></div>
-				<div class="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(5,7,10,0.2)_0%,#05070a_96%)]"></div>
-				<div class="absolute inset-x-0 bottom-0 z-20 h-72 bg-[linear-gradient(180deg,rgba(5,7,10,0)_0%,#05070a_38%,#05070a_100%)]"></div>
+            <p class="hero-subtitle">
+                Dedica tu tiempo a lo importante. Tu página se encarga de presentar tus servicios,
+                responder las dudas más comunes y generar confianza en futuros clientes las 24 horas.
+            </p>
 
-				<div class="relative z-30 mx-auto grid max-w-7xl gap-10 px-4 pb-20 pt-10 sm:px-6 sm:pt-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.55fr)] lg:px-8 lg:pb-28 lg:pt-24">
-					<div class="max-w-3xl">
-						<div class="reveal-up inline-flex max-w-full items-center gap-2 rounded-full border border-white/12 bg-white/8 px-3 py-2 text-xs font-medium text-white/78 backdrop-blur">
-							<span class="size-2 rounded-full bg-mint-300 shadow-[0_0_16px_rgba(125,247,196,0.85)]"></span>
-							Páginas útiles para negocios reales
-						</div>
+            <div class="hero-cta">
+                <a class="btn btn-primary" href="#contacto">Cuéntame sobre tu negocio</a>
+            </div>
 
-						<h1 class="reveal-up reveal-delay-1 mt-7 max-w-4xl text-balance text-5xl font-semibold leading-[1.02] tracking-normal text-white sm:text-6xl lg:text-7xl">
-							Tu negocio también puede estar abierto en internet.
-						</h1>
+            <p class="hero-microcopy">
+                Disponible 24 horas · Información clara · Contacto fácil
+            </p>
 
-						<p class="reveal-up reveal-delay-2 mt-6 max-w-2xl text-pretty text-lg leading-8 text-white/72 sm:text-xl">
-							Diseño y desarrollo páginas web, landing pages, catálogos y formularios para que tus clientes te entiendan, confíen y puedan contactarte sin fricción.
-						</p>
+            <div class="float-element element-1" aria-hidden="true">📊</div>
+            <div class="float-element element-2" aria-hidden="true">🎯</div>
+            <div class="float-element element-3" aria-hidden="true">✨</div>
+        </div>
+    </section>
 
-						<div class="reveal-up reveal-delay-3 mt-9 flex flex-col gap-3 sm:flex-row">
-							<a
-								href="#contacto"
-								class="inline-flex items-center justify-center gap-2 rounded-full bg-mint-300 px-6 py-4 text-sm font-semibold text-ink-950 shadow-[0_0_38px_rgba(125,247,196,0.28)] transition hover:-translate-y-0.5 hover:bg-white focus:outline-none focus:ring-2 focus:ring-mint-300 focus:ring-offset-2 focus:ring-offset-ink-950"
-							>
-								Cuéntame sobre tu negocio
-								<ArrowRight class="size-4" aria-hidden="true" />
-							</a>
-							<a
-								href="#proceso"
-								class="inline-flex items-center justify-center gap-2 rounded-full border border-white/14 bg-white/7 px-6 py-4 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-aqua-300/45 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-aqua-300 focus:ring-offset-2 focus:ring-offset-ink-950"
-							>
-								Ver cómo trabajo
-								<CalendarCheck class="size-4" aria-hidden="true" />
-							</a>
-						</div>
+    <!-- WHY WEB SECTION -->
+    <section class="content-section why-web">
+        <div class="container">
+            <div class="content-copy">
+                <h2>¿Por qué tener una página web?</h2>
+                <p>Tus clientes buscan información antes de tomar una decisión.</p>
+                <p>Quieren saber quién eres, qué haces, cómo trabajas y cómo pueden contactarte.</p>
+                <p>Una página web bien construida permite que encuentren esas respuestas rápidamente, incluso cuando tú no estás disponible para responder mensajes o llamadas.</p>
+                <p>Es como tener una sucursal digital abierta todos los días.</p>
+            </div>
+        </div>
+    </section>
 
-						<div class="mt-10 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
-							{
-								stats.map((stat) => (
-									<div class="glass-panel rounded-lg px-4 py-4">
-										<p class="text-2xl font-semibold text-white">{stat.value}</p>
-										<p class="mt-1 text-sm leading-5 text-white/58">{stat.label}</p>
-									</div>
-								))
-							}
-						</div>
-					</div>
+    <!-- BENEFITS SECTION -->
+    <section class="metrics" id="beneficios">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lo que una página puede hacer por tu negocio</h2>
+                <p>Claridad, confianza y contacto en el momento correcto</p>
+            </div>
 
-					<div class="hidden items-end lg:flex">
-						<div class="glass-panel lift-card w-full rounded-xl p-5">
-							<div class="flex items-start justify-between gap-4">
-								<div>
-									<p class="text-sm font-semibold text-white">Vista rápida</p>
-									<p class="mt-1 text-sm text-white/58">Así se ordena tu presencia digital.</p>
-								</div>
-								<span class="rounded-full bg-aqua-300/12 px-3 py-1 text-xs font-semibold text-aqua-300">En línea</span>
-							</div>
-							<div class="mt-5 space-y-3">
-								<div class="rounded-lg border border-white/10 bg-white/6 p-4">
-									<div class="flex items-center gap-3">
-										<span class="grid size-10 place-items-center rounded-lg bg-mint-300/12 text-mint-300">
-											<Store class="size-5" aria-hidden="true" />
-										</span>
-										<div>
-											<p class="text-sm font-semibold text-white">Tu sucursal en línea</p>
-											<p class="text-xs text-white/52">Servicios, ubicación y contacto.</p>
-										</div>
-									</div>
-								</div>
-								<div class="grid grid-cols-2 gap-3">
-									<div class="rounded-lg border border-white/10 bg-white/6 p-4">
-										<Globe2 class="size-5 text-aqua-300" aria-hidden="true" />
-										<p class="mt-5 text-sm font-semibold text-white">Encuentro</p>
-										<p class="mt-1 text-xs text-white/52">Te descubren desde el celular.</p>
-									</div>
-									<div class="rounded-lg border border-white/10 bg-white/6 p-4">
-										<PhoneCall class="size-5 text-sun-300" aria-hidden="true" />
-										<p class="mt-5 text-sm font-semibold text-white">Contacto</p>
-										<p class="mt-1 text-xs text-white/52">Mensajes mejor preparados.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+            <div class="metrics-grid">
+                <article class="metric-card">
+                    <div class="metric-icon" aria-hidden="true">🤝</div>
+                    <h3>Genera confianza</h3>
+                    <p>Una presencia profesional ayuda a que las personas te conozcan mejor antes de contactarte.</p>
+                </article>
 
-			<section id="servicios" class="relative py-20 sm:py-24">
-				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-					<div class="max-w-3xl">
-						<p class="text-sm font-semibold uppercase tracking-[0.22em] text-mint-300">Servicios</p>
-						<h2 class="mt-4 text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
-							Lo necesario para que tu negocio se vea claro, activo y profesional.
-						</h2>
-						<p class="mt-5 text-lg leading-8 text-white/64">
-							No se trata de llenar una página por llenar. Se trata de construir un lugar útil donde tus clientes puedan entenderte y tomar acción.
-						</p>
-					</div>
+                <article class="metric-card">
+                    <div class="metric-icon" aria-hidden="true">💡</div>
+                    <h3>Responde preguntas frecuentes</h3>
+                    <p>Horarios, servicios, ubicación, formas de contacto y detalles importantes disponibles en un solo lugar.</p>
+                </article>
 
-					<div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-						{
-							services.map((service) => {
-								const Icon = service.icon;
-								return (
-									<article class="glass-panel lift-card rounded-xl p-6">
-										<div class={`grid size-12 place-items-center rounded-lg border border-white/10 bg-white/7 ${service.accent}`}>
-											<Icon class="size-6" aria-hidden="true" />
-										</div>
-										<h3 class="mt-6 text-xl font-semibold text-white">{service.title}</h3>
-										<p class="mt-3 text-pretty leading-7 text-white/62">{service.text}</p>
-									</article>
-								);
-							})
-						}
-					</div>
-				</div>
-			</section>
+                <article class="metric-card">
+                    <div class="metric-icon" aria-hidden="true">🌍</div>
+                    <h3>Disponible las 24 horas</h3>
+                    <p>Tu negocio sigue presente aunque estés ocupado atendiendo clientes o realizando otras actividades.</p>
+                </article>
 
-			<section id="proceso" class="py-20 sm:py-24">
-				<div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
-					<div>
-						<p class="text-sm font-semibold uppercase tracking-[0.22em] text-aqua-300">Cómo trabajo</p>
-						<h2 class="mt-4 text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
-							Trabajo contigo directo, con preguntas simples y decisiones claras.
-						</h2>
-						<p class="mt-5 text-lg leading-8 text-white/64">
-							Puedo avanzar en línea o agendar una visita presencial si tu negocio necesita revisar fotos, productos, espacio o materiales en persona.
-						</p>
-						<div class="mt-8 rounded-xl border border-mint-300/18 bg-mint-300/8 p-5">
-							<div class="flex gap-3">
-								<Handshake class="mt-1 size-5 shrink-0 text-mint-300" aria-hidden="true" />
-								<p class="text-pretty leading-7 text-white/72">
-									La idea es que no sientas que estás contratando una agencia enorme. Hablas con alguien que diseña, desarrolla y entiende el objetivo contigo.
-								</p>
-							</div>
-						</div>
-					</div>
+                <article class="metric-card">
+                    <div class="metric-icon" aria-hidden="true">💬</div>
+                    <h3>Facilita el contacto</h3>
+                    <p>Menos tiempo explicando lo mismo y más tiempo atendiendo personas realmente interesadas.</p>
+                </article>
+            </div>
+        </div>
+    </section>
 
-					<div class="glass-panel rounded-xl p-4 sm:p-6">
-						<ol class="space-y-3">
-							{
-								process.map((step, index) => (
-									<li class="group flex gap-4 rounded-lg border border-white/8 bg-white/[0.045] p-4 transition hover:border-mint-300/28 hover:bg-white/[0.07]">
-										<span class="grid size-9 shrink-0 place-items-center rounded-lg bg-white/8 text-sm font-semibold text-mint-300">
-											{String(index + 1).padStart(2, '0')}
-										</span>
-										<p class="self-center leading-7 text-white/72">{step}</p>
-									</li>
-								))
-							}
-						</ol>
-					</div>
-				</div>
-			</section>
+    <!-- SERVICES SECTION -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <h2>Servicios</h2>
+                <p>Soluciones adaptadas a la etapa digital de tu negocio</p>
+            </div>
 
-			<section id="proyectos" class="py-20 sm:py-24">
-				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-					<div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-						<div class="max-w-3xl">
-							<p class="text-sm font-semibold uppercase tracking-[0.22em] text-sun-300">Proyectos</p>
-							<h2 class="mt-4 text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
-								Ejemplos de páginas pensadas para vender mejor, no solo para verse bonitas.
-							</h2>
-						</div>
-						<a href="#contacto" class="inline-flex w-fit items-center gap-2 rounded-full border border-white/14 bg-white/7 px-5 py-3 text-sm font-semibold text-white transition hover:border-sun-300/45 hover:bg-white/10">
-							Crear algo similar
-							<Rocket class="size-4" aria-hidden="true" />
-						</a>
-					</div>
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="service-number">01</div>
+                    <h3>Landing Pages</h3>
+                    <p>Páginas enfocadas en presentar un servicio, producto o negocio de forma clara y directa.</p>
+                    <div class="service-tag">Claridad</div>
+                </article>
 
-					<div class="mt-12 grid gap-4 lg:grid-cols-3">
-						{
-							projects.map((project) => (
-								<article class="glass-panel lift-card flex min-h-full flex-col rounded-xl p-6">
-									<div class="flex items-center justify-between gap-4">
-										<h3 class="text-2xl font-semibold text-white">{project.name}</h3>
-										<span class="grid size-10 place-items-center rounded-lg bg-aqua-300/10 text-aqua-300">
-											<CheckCircle2 class="size-5" aria-hidden="true" />
-										</span>
-									</div>
-									<p class="mt-4 leading-7 text-white/64">{project.description}</p>
-									<div class="mt-6 space-y-4">
-										<div>
-											<p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/42">Objetivo</p>
-											<p class="mt-2 text-sm leading-6 text-white/72">{project.goal}</p>
-										</div>
-										<div>
-											<p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/42">Tecnologías</p>
-											<div class="mt-3 flex flex-wrap gap-2">
-												{project.tech.map((tech) => (
-													<span class="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-xs font-medium text-white/70">{tech}</span>
-												))}
-											</div>
-										</div>
-									</div>
-									<div class="mt-auto pt-7">
-										<p class="rounded-lg border border-mint-300/14 bg-mint-300/8 p-4 text-sm leading-6 text-white/72">
-											{project.result}
-										</p>
-									</div>
-								</article>
-							))
-						}
-					</div>
-				</div>
-			</section>
+                <article class="service-card">
+                    <div class="service-number">02</div>
+                    <h3>Sitios Web para Negocios</h3>
+                    <p>Una presencia digital completa para mostrar quién eres, qué haces y cómo pueden encontrarte.</p>
+                    <div class="service-tag">Presencia digital</div>
+                </article>
 
-			<section class="py-20 sm:py-24">
-				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-					<div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-						<div>
-							<p class="text-sm font-semibold uppercase tracking-[0.22em] text-mint-300">Beneficios</p>
-							<h2 class="mt-4 text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
-								Una buena página trabaja incluso antes de que tú contestes el primer mensaje.
-							</h2>
-							<p class="mt-5 text-lg leading-8 text-white/64">
-								La meta es que el cliente llegue con menos dudas, más confianza y una forma clara de avanzar.
-							</p>
-						</div>
+                <article class="service-card">
+                    <div class="service-number">03</div>
+                    <h3>Catálogos Digitales</h3>
+                    <p>Organiza y presenta tus productos o servicios de manera profesional.</p>
+                    <div class="service-tag">Productos y servicios</div>
+                </article>
 
-						<div class="grid gap-3 sm:grid-cols-2">
-							{
-								benefits.map((benefit) => {
-									const Icon = benefit.icon;
-									return (
-										<div class="rounded-xl border border-white/10 bg-white/[0.055] p-5">
-											<Icon class="size-5 text-aqua-300" aria-hidden="true" />
-											<p class="mt-4 leading-7 text-white/70">{benefit.text}</p>
-										</div>
-									);
-								})
-							}
-						</div>
-					</div>
-				</div>
-			</section>
+                <article class="service-card">
+                    <div class="service-number">04</div>
+                    <h3>Presencia Digital</h3>
+                    <p>Configuración de correo corporativo, Google Maps y herramientas necesarias para fortalecer tu negocio en internet.</p>
+                    <div class="service-tag">Herramientas clave</div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-			<section id="contacto" class="py-20 sm:py-24">
-				<div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
-					<div class="rounded-xl border border-white/10 bg-white/[0.045] p-6 sm:p-8">
-						<p class="text-sm font-semibold uppercase tracking-[0.22em] text-aqua-300">Contacto</p>
-						<h2 class="mt-4 text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
-							Cuéntame qué necesita tu negocio y te digo por dónde empezar.
-						</h2>
-						<p class="mt-5 text-lg leading-8 text-white/64">
-							No necesitas llegar con todo resuelto. Con una idea general puedo ayudarte a ordenar alcance, contenido y siguiente paso.
-						</p>
-						<div class="mt-8 space-y-4">
-							<div class="flex gap-3">
-								<span class="grid size-10 shrink-0 place-items-center rounded-lg bg-mint-300/10 text-mint-300">
-									<CalendarCheck class="size-5" aria-hidden="true" />
-								</span>
-								<p class="self-center text-white/70">Podemos trabajar en línea o agendar visita presencial.</p>
-							</div>
-							<div class="flex gap-3">
-								<span class="grid size-10 shrink-0 place-items-center rounded-lg bg-sun-300/10 text-sun-300">
-									<MessageCircle class="size-5" aria-hidden="true" />
-								</span>
-								<p class="self-center text-white/70">El formulario abre WhatsApp con tu mensaje ya preparado.</p>
-							</div>
-						</div>
-					</div>
+    <!-- PROCESS SECTION -->
+    <section class="process" id="proceso">
+        <div class="container">
+            <div class="section-header">
+                <h2>Cómo trabajo</h2>
+                <p>Un proceso claro para convertir tu información en una presencia digital funcional</p>
+            </div>
 
-					<form id="contact-form" data-whatsapp-number="" class="glass-panel rounded-xl p-5 sm:p-7">
-						<div class="grid gap-4 sm:grid-cols-2">
-							<label class="block">
-								<span class="text-sm font-medium text-white/72">Nombre</span>
-								<input
-									name="name"
-									type="text"
-									required
-									autocomplete="name"
-									placeholder="Tu nombre"
-									class="mt-2 w-full rounded-lg border border-white/10 bg-white/7 px-4 py-3 text-white outline-none transition placeholder:text-white/32 focus:border-mint-300/60 focus:ring-4 focus:ring-mint-300/10"
-								/>
-							</label>
-							<label class="block">
-								<span class="text-sm font-medium text-white/72">Negocio</span>
-								<input
-									name="business"
-									type="text"
-									required
-									placeholder="Nombre del negocio"
-									class="mt-2 w-full rounded-lg border border-white/10 bg-white/7 px-4 py-3 text-white outline-none transition placeholder:text-white/32 focus:border-mint-300/60 focus:ring-4 focus:ring-mint-300/10"
-								/>
-							</label>
-						</div>
+            <div class="process-steps">
+                <article class="step">
+                    <div class="step-number">01</div>
+                    <h3>Conozco tu negocio</h3>
+                    <p>Primero entiendo qué haces, quiénes son tus clientes y qué objetivos quieres alcanzar.</p>
+                    <div class="step-icon" aria-hidden="true">💬</div>
+                </article>
 
-						<label class="mt-4 block">
-							<span class="text-sm font-medium text-white/72">Qué necesita</span>
-							<select
-								name="need"
-								required
-								class="mt-2 w-full rounded-lg border border-white/10 bg-ink-900 px-4 py-3 text-white outline-none transition focus:border-mint-300/60 focus:ring-4 focus:ring-mint-300/10"
-							>
-								<option value="">Selecciona una opción</option>
-								<option>Landing page</option>
-								<option>Sitio web</option>
-								<option>Catálogo digital</option>
-								<option>Formulario o contacto</option>
-								<option>Presencia digital para mi negocio</option>
-								<option>No estoy seguro, quiero orientación</option>
-							</select>
-						</label>
+                <div class="step-arrow" aria-hidden="true">→</div>
 
-						<label class="mt-4 block">
-							<span class="text-sm font-medium text-white/72">WhatsApp</span>
-							<input
-								name="phone"
-								type="tel"
-								required
-								autocomplete="tel"
-								placeholder="Tu número de WhatsApp"
-								class="mt-2 w-full rounded-lg border border-white/10 bg-white/7 px-4 py-3 text-white outline-none transition placeholder:text-white/32 focus:border-mint-300/60 focus:ring-4 focus:ring-mint-300/10"
-							/>
-						</label>
+                <article class="step">
+                    <div class="step-number">02</div>
+                    <h3>Organizo la información</h3>
+                    <p>Definimos qué necesita ver una persona para confiar en tu negocio.</p>
+                    <div class="step-icon" aria-hidden="true">📋</div>
+                </article>
 
-						<label class="mt-4 block">
-							<span class="text-sm font-medium text-white/72">Mensaje</span>
-							<textarea
-								name="message"
-								required
-								rows="5"
-								placeholder="Cuéntame qué vendes, qué te gustaría mostrar o qué problema quieres resolver."
-								class="mt-2 w-full resize-none rounded-lg border border-white/10 bg-white/7 px-4 py-3 text-white outline-none transition placeholder:text-white/32 focus:border-mint-300/60 focus:ring-4 focus:ring-mint-300/10"
-							></textarea>
-						</label>
+                <div class="step-arrow" aria-hidden="true">→</div>
 
-						<button
-							type="submit"
-							class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-mint-300 px-6 py-4 text-sm font-semibold text-ink-950 shadow-[0_0_38px_rgba(125,247,196,0.24)] transition hover:-translate-y-0.5 hover:bg-white focus:outline-none focus:ring-2 focus:ring-mint-300 focus:ring-offset-2 focus:ring-offset-ink-950"
-						>
-							Enviar por WhatsApp
-							<Send class="size-4" aria-hidden="true" />
-						</button>
-					</form>
-				</div>
-			</section>
+                <article class="step">
+                    <div class="step-number">03</div>
+                    <h3>Diseño y desarrollo</h3>
+                    <p>Construyo una página clara, moderna y enfocada en la experiencia del visitante.</p>
+                    <div class="step-icon" aria-hidden="true">🎨</div>
+                </article>
 
-			<section class="pb-20 sm:pb-24">
-				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-					<div class="glass-panel overflow-hidden rounded-xl p-8 sm:p-10 lg:p-12">
-						<div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-							<div>
-								<p class="text-sm font-semibold uppercase tracking-[0.22em] text-mint-300">Siguiente paso</p>
-								<h2 class="mt-4 max-w-3xl text-balance text-4xl font-semibold tracking-normal text-white sm:text-5xl">
-									Tu idea puede convertirse en una página clara, útil y lista para compartir.
-								</h2>
-								<p class="mt-5 max-w-2xl text-lg leading-8 text-white/64">
-									Platicamos lo que tienes, lo que falta y lo que más le conviene a tu negocio en esta etapa.
-								</p>
-							</div>
-							<a
-								href="#contacto"
-								class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-sm font-semibold text-ink-950 transition hover:-translate-y-0.5 hover:bg-mint-300"
-							>
-								Quiero empezar
-								<ArrowRight class="size-4" aria-hidden="true" />
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-		</main>
+                <div class="step-arrow" aria-hidden="true">→</div>
 
-		<footer class="border-t border-white/10 py-8">
-			<div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 text-sm text-white/48 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-				<p>© 2026 Jure Digital. Páginas web para negocios locales.</p>
-				<p>Diseño directo, desarrollo claro y presencia en línea.</p>
-			</div>
-		</footer>
+                <article class="step">
+                    <div class="step-number">04</div>
+                    <h3>Publicación</h3>
+                    <p>Tu sitio queda listo para que cualquier persona pueda conocer tu negocio desde internet.</p>
+                    <div class="step-icon" aria-hidden="true">🚀</div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-		<script>
-			const menuButton = document.querySelector('#mobile-menu-button');
-			const mobileMenu = document.querySelector('#mobile-menu');
-			const openIcon = menuButton?.querySelector('.menu-open');
-			const closeIcon = menuButton?.querySelector('.menu-close');
+    <!-- VALUE SECTION -->
+    <section class="content-section value-section">
+        <div class="container">
+            <div class="content-copy">
+                <h2>Más que una página bonita</h2>
+                <p>No se trata únicamente de tener una página.</p>
+                <p>Se trata de tener un espacio donde tus clientes puedan entender rápidamente qué haces, por qué deberían elegirte y cómo pueden ponerse en contacto contigo.</p>
+                <p>Cada proyecto se desarrolla pensando en las personas que visitarán el sitio y en las necesidades reales de tu negocio.</p>
+            </div>
+        </div>
+    </section>
 
-			const closeMenu = () => {
-				mobileMenu?.classList.add('hidden');
-				menuButton?.setAttribute('aria-expanded', 'false');
-				openIcon?.classList.remove('hidden');
-				closeIcon?.classList.add('hidden');
-			};
+    <!-- FAQ SECTION -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Respuestas rápidas para empezar con claridad</p>
+            </div>
 
-			menuButton?.addEventListener('click', () => {
-				const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-				mobileMenu?.classList.toggle('hidden', isExpanded);
-				menuButton.setAttribute('aria-expanded', String(!isExpanded));
-				openIcon?.classList.toggle('hidden', !isExpanded);
-				closeIcon?.classList.toggle('hidden', isExpanded);
-			});
+            <div class="faq-grid">
+                <article class="faq-card">
+                    <h3>¿Necesito tener todo preparado?</h3>
+                    <p>No. Podemos organizar juntos la información necesaria para construir la página.</p>
+                </article>
 
-			mobileMenu?.querySelectorAll('a').forEach((link) => {
-				link.addEventListener('click', closeMenu);
-			});
+                <article class="faq-card">
+                    <h3>¿Funcionará en celulares?</h3>
+                    <p>Sí. La experiencia móvil es una prioridad.</p>
+                </article>
 
-			const form = document.querySelector('#contact-form');
+                <article class="faq-card">
+                    <h3>¿Puedo actualizarla después?</h3>
+                    <p>Sí. Dependiendo del proyecto, podemos dejar herramientas para realizar cambios o ayudarte con futuras actualizaciones.</p>
+                </article>
 
-			form?.addEventListener('submit', (event) => {
-				event.preventDefault();
+                <article class="faq-card">
+                    <h3>¿Cuánto tiempo tarda?</h3>
+                    <p>Depende del alcance del proyecto, pero una landing suele completarse en pocos días una vez que contamos con la información necesaria.</p>
+                </article>
+            </div>
+        </div>
+    </section>
 
-				const formData = new FormData(form);
-				const name = String(formData.get('name') || '').trim();
-				const business = String(formData.get('business') || '').trim();
-				const need = String(formData.get('need') || '').trim();
-				const phone = String(formData.get('phone') || '').trim();
-				const message = String(formData.get('message') || '').trim();
-				const ownerNumber = form.getAttribute('data-whatsapp-number')?.trim();
+    <!-- FINAL CTA SECTION -->
+    <section class="final-cta" id="contacto">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Cuéntame sobre <span class="highlight-serif">tu proyecto</span></h2>
+                <p>Si tienes una idea, un negocio o un servicio que quieres mostrar en internet, conversemos. Explícame qué necesitas y encontraremos la mejor forma de construir una presencia digital que represente tu trabajo.</p>
+            </div>
 
-				const whatsappMessage = [
-					'Hola, quiero una página para mi negocio.',
-					`Mi nombre es ${name}.`,
-					`Mi negocio es ${business}.`,
-					`Me interesa ${need}.`,
-					`Mi WhatsApp es ${phone}.`,
-					`Mi mensaje es: ${message}.`,
-				].join(' ');
+            <form class="contact-form" id="revonWhatsAppForm">
+                <div class="form-grid">
+                    <label class="form-field" for="nombre">
+                        <span>Nombre</span>
+                        <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+                    </label>
 
-				const target = ownerNumber
-					? `https://wa.me/${ownerNumber}?text=${encodeURIComponent(whatsappMessage)}`
-					: `https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`;
+                    <label class="form-field" for="negocio">
+                        <span>Nombre del negocio</span>
+                        <input id="negocio" name="negocio" type="text" autocomplete="organization" required>
+                    </label>
 
-				window.open(target, '_blank', 'noopener,noreferrer');
-			});
-		</script>
-	</body>
+                    <label class="form-field" for="giro">
+                        <span>Giro del negocio</span>
+                        <input id="giro" name="giro" type="text" required>
+                    </label>
+
+                    <label class="form-field" for="servicio">
+                        <span>Servicio de interés</span>
+                        <select id="servicio" name="servicio" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="Landing Pages">Landing Pages</option>
+                            <option value="Sitios Web para Negocios">Sitios Web para Negocios</option>
+                            <option value="Catálogos Digitales">Catálogos Digitales</option>
+                            <option value="Presencia Digital">Presencia Digital</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field form-field-full" for="mensaje">
+                        <span>Mensaje o necesidad principal</span>
+                        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                    </label>
+                </div>
+
+                <button class="btn btn-primary btn-large" type="submit">Enviar por WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h4>REVON</h4>
+                    <p>Presencia digital clara para negocios locales</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#beneficios">Beneficios</a>
+                    <a href="#servicios">Servicios</a>
+                    <a href="#proceso">Proceso</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 REVON. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a
+        id="floatingWhatsApp"
+        class="floating-whatsapp"
+        href="https://wa.me/2721103644?text=Hola%2C%20me%20interesa%20agendar%20una%20cita%20para%20un%20proyecto."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Abrir WhatsApp"
+    >
+        <svg class="floating-whatsapp-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12.031 0C5.383 0 0 5.383 0 12.031c0 2.124.553 4.195 1.604 6.012L.116 23.884l6.015-1.576A11.96 11.96 0 0012.031 24c6.648 0 12.031-5.383 12.031-12.031S18.679 0 12.031 0zm0 21.968c-1.802 0-3.568-.485-5.118-1.404l-.367-.217-3.805.997 1.018-3.708-.238-.378A9.92 9.92 0 012.031 12.03c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 9.938-10 9.938zm5.495-7.518c-.301-.151-1.783-.881-2.059-.982-.276-.101-.477-.151-.678.151-.201.302-.779.982-.955 1.183-.176.201-.352.226-.653.075-.301-.151-1.272-.469-2.423-1.498-.895-.799-1.5-1.787-1.676-2.088-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.528.151-.176.201-.301.301-.502.101-.201.05-.377-.025-.528-.075-.151-.678-1.634-.929-2.237-.245-.589-.495-.509-.678-.518-.176-.009-.377-.009-.578-.009s-.528.075-.804.377c-.276.302-1.055 1.03-1.055 2.513s1.08 2.915 1.231 3.116c.151.201 2.124 3.242 5.143 4.544.718.31 1.278.495 1.716.634.721.229 1.378.197 1.895.119.581-.088 1.783-.729 2.034-1.433.251-.704.251-1.307.176-1.433-.075-.126-.276-.201-.577-.352z"></path>
+        </svg>
+    </a>
+
+    <script is:inline>
+        const navToggle = document.getElementById("navToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        const closeMenu = () => {
+            navLinks?.classList.remove("active");
+            navToggle?.setAttribute("aria-expanded", "false");
+        };
+
+        navToggle?.addEventListener("click", () => {
+            const isOpen = navLinks?.classList.toggle("active") ?? false;
+            navToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        navLinks?.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        });
+
+        const WHATSAPP_NUMBER = "2721103644";
+        const contactForm = document.getElementById("revonWhatsAppForm");
+
+        contactForm?.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const nombre = String(formData.get("nombre") ?? "").trim();
+            const negocio = String(formData.get("negocio") ?? "").trim();
+            const giro = String(formData.get("giro") ?? "").trim();
+            const servicio = String(formData.get("servicio") ?? "").trim();
+            const mensaje = String(formData.get("mensaje") ?? "").trim();
+
+            const whatsappMessage = `Hola, quiero información sobre una página web para mi negocio.
+
+Nombre: ${nombre}
+Negocio: ${negocio}
+Giro: ${giro}
+Servicio de interés: ${servicio}
+Mensaje: ${mensaje}`;
+
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, "_blank", "noopener,noreferrer");
+        });
+
+        const FLOATING_WHATSAPP_NUMBER = "2721103644";
+        const FLOATING_WHATSAPP_MESSAGE = "Hola, me interesa agendar una cita para un proyecto.";
+
+        const createWhatsAppLink = (mensaje) => {
+            const numero = typeof INFO_NEGOCIO !== "undefined" && INFO_NEGOCIO.whatsapp
+                ? INFO_NEGOCIO.whatsapp
+                : FLOATING_WHATSAPP_NUMBER;
+
+            return `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+        };
+
+        document
+            .getElementById("floatingWhatsApp")
+            ?.setAttribute("href", createWhatsAppLink(FLOATING_WHATSAPP_MESSAGE));
+    </script>
+</body>
 </html>
